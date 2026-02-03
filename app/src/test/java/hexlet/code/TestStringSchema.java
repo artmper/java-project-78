@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.schemas.BaseSchema;
 import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +39,7 @@ public class TestStringSchema {
 
     @Test
     void testIsValid4() {
-        boolean actual1 = schema.contains("wh").isValid("what does the fox say");
+        boolean actual1 = schema.required().contains("wh").isValid("what does the fox say");
         boolean actual2 = schema.contains("what").isValid("what does the fox say");
         boolean actual3 = schema.contains("whatthe").isValid("what does the fox say");
 

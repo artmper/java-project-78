@@ -10,11 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestNumberSchema {
 
     NumberSchema schema;
-    Validator validator;
+    Validator validator = new Validator();
 
     @BeforeEach
     void beforeEach() {
-        validator = new Validator();
         schema = validator.number();
     }
 
@@ -36,8 +35,9 @@ public class TestNumberSchema {
 
     @Test
     void testIsValid3() {
+
         boolean actual1 = schema.required().isValid(null);
-        boolean actual2 = schema.required().isValid(15);
+        boolean actual2 = schema.isValid(15);
 
         assertFalse(actual1);
         assertTrue(actual2);
