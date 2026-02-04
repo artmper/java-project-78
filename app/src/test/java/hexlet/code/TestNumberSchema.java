@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestNumberSchema {
-
-    NumberSchema schema;
-    Validator validator = new Validator();
+class TestNumberSchema {
+    private static NumberSchema schema;
 
     @BeforeEach
     void beforeEach() {
+        Validator validator = new Validator();
         schema = validator.number();
     }
 

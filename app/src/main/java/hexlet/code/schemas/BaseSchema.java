@@ -14,11 +14,11 @@ public abstract class BaseSchema<T> {
         return this;
     }
 
-    void addCheck(String checkName, Predicate<T> predicate) {
+    public final void addCheck(String checkName, Predicate<T> predicate) {
         checks.put(checkName, predicate);
     }
 
-    public boolean isValid(T value) {
+    public final boolean isValid(T value) {
         for (Predicate<T> check : checks.values()) {
             if (!check.test(value)) {
                 return false;
