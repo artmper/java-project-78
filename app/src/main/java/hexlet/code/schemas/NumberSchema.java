@@ -1,10 +1,12 @@
 package hexlet.code.schemas;
 
-public class NumberSchema extends BaseSchema<Integer> {
+import java.util.Objects;
+
+public final class NumberSchema extends BaseSchema<Integer> {
 
     @Override
     public NumberSchema required() {
-        super.required();
+        addCheck("required", Objects::nonNull);
 
         return this;
     }
