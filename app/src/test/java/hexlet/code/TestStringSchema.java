@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public final class TestStringSchema {
+class TestStringSchema {
     private static StringSchema schema;
 
     @BeforeEach
@@ -21,6 +21,14 @@ public final class TestStringSchema {
     void testIsValid1() {
         boolean actual = schema.isValid(null);
         assertTrue(actual);
+    }
+
+    @Test
+    void testIsValidEmpty() {
+        boolean actual1 = schema.isValid("");
+        boolean actual2 = schema.required().isValid("");
+        assertTrue(actual1);
+        assertFalse(actual2);
     }
 
     @Test
@@ -42,6 +50,17 @@ public final class TestStringSchema {
         boolean actual1 = schema.required().contains("wh").isValid("what does the fox say");
         boolean actual2 = schema.contains("what").isValid("what does the fox say");
         boolean actual3 = schema.contains("whatthe").isValid("what does the fox say");
+
+        assertTrue(actual1);
+        assertTrue(actual2);
+        assertFalse(actual3);
+    }
+
+    @Test
+    void testIsValid5() {
+        boolean actual1 = schema.minLength(10).isValid("          ");
+        boolean actual2 = schema.minLength(3).contains(" the ").isValid("What the f");
+        boolean actual3 = schema.required().isValid("    ");
 
         assertTrue(actual1);
         assertTrue(actual2);
