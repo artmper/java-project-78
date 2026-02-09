@@ -60,7 +60,7 @@ class TestStringSchema {
     void testIsValid5() {
         boolean actual1 = schema.minLength(10).isValid("          ");
         boolean actual2 = schema.minLength(3).contains(" the ").isValid("What the f");
-        boolean actual3 = schema.required().isValid("    ");
+        boolean actual3 = schema.required().isValid("      ");
 
         assertTrue(actual1);
         assertTrue(actual2);
